@@ -1,0 +1,52 @@
+[build-system]
+requires = ["setuptools==80.9.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "chromatinhd-candidate"
+version = "0.4.3"
+description = "ChromatinHD-diff 0.4.3 candidate for the Iomix differential accessibility task"
+requires-python = ">=3.13,<3.14"
+dependencies = [
+  "chromatinhd @ https://github.com/instantomics/chromatinhd/releases/download/chromatinhd-wheel-v0.4.3/chromatinhd-0.4.3-cp313-cp313-linux_x86_64.whl",
+  "numpy==2.5.3",
+  "pandas==3.0.6",
+  # Upstream imports polyptich at package import without declaring it.
+  "polyptich==0.0.20",
+  "pyarrow==25.0.1",
+]
+
+[project.optional-dependencies]
+cpu = ["torch==2.14.0"]
+cu128 = ["torch==2.11.0"]
+cu130 = ["torch==2.14.0"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.uv]
+package = false
+conflicts = [[{ extra = "cpu" }, { extra = "cu128" }, { extra = "cu130" }]]
+environments = ["sys_platform == 'linux' and platform_machine == 'x86_64'"]
+
+[tool.uv.sources]
+torch = [
+  { index = "pytorch-cpu", extra = "cpu" },
+  { index = "pytorch-cu128", extra = "cu128" },
+  { index = "pytorch-cu130", extra = "cu130" },
+]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true
+
+[[tool.uv.index]]
+name = "pytorch-cu130"
+url = "https://download.pytorch.org/whl/cu130"
+explicit = true

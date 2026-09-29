@@ -1,0 +1,37 @@
+schema_version = 1
+
+[reference]
+id = "chromatinhd"
+repository = "git@github.com:instantomics/chromatinhd.git"
+
+[candidate]
+draft = "candidate"
+
+[[integrations]]
+task_id = "differential_accessibility"
+interface_id = "differential_accessibility.candidate:1"
+default_preset = "default"
+
+[[integrations.presets]]
+id = "default"
+parameters = { lr = 0.01, n_cells_step = 250, n_epochs = 30, n_regions_step = 100, random_seed = 1729 }
+
+[execution]
+entrypoint = "run_reference.py"
+api_version = 1
+allowed_tools = ["freeze_candidate", "validate_model", "evaluate", "wait_job", "inspect_job"]
+max_tool_calls = 16
+timeout_seconds = 3600
+network_access = "none"
+
+[environment]
+kind = "uv"
+project_root = "."
+lock = "uv.lock"
+
+[resources]
+cpus = 4
+memory_bytes = 34359738368
+walltime_seconds = 3600
+gpus = 0
+temporary_storage_bytes = 17179869184
