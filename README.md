@@ -39,12 +39,13 @@ encoder, and its trainer are used unchanged.
   early stopping. The seed is 1729, and training runs on four CPU threads in
   the task's adapted route.
 
-Upstream publishes only a Cython sdist, and it imports `polyptich` without
-declaring it. [`scripts/build_chromatinhd_wheel.sh`](scripts/build_chromatinhd_wheel.sh)
-builds the sdist into the Linux wheel published as this repository's
+Upstream publishes only a Cython sdist.
+[`scripts/build_chromatinhd_wheel.sh`](scripts/build_chromatinhd_wheel.sh)
+builds it into the Linux wheel published as this repository's
 `chromatinhd-wheel-v0.4.3` release asset. The script checks the sdist's
 SHA-256, uses pinned build tools, and requires GCC 14.3. The candidate lock
-pins that wheel and `polyptich`.
+pins that wheel. Upstream imports `polyptich` without declaring it. The
+candidate session gets it from the Iomix framework, which depends on it.
 
 ## Scientific notes
 

@@ -11,8 +11,6 @@ dependencies = [
   "chromatinhd @ https://github.com/instantomics/chromatinhd/releases/download/chromatinhd-wheel-v0.4.3/chromatinhd-0.4.3-cp313-cp313-linux_x86_64.whl",
   "numpy==2.5.3",
   "pandas==3.0.6",
-  # Upstream imports polyptich at package import without declaring it.
-  "polyptich==0.0.20",
   "pyarrow==25.0.1",
 ]
 

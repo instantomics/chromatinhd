@@ -63,15 +63,6 @@ wheels = [
 ]
 
 [[package]]
-name = "blinker"
-version = "1.9.0"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/21/28/9b3f50ce0e048515135495f198351908d99540d69bfdc8c1d15b73dc55ce/blinker-1.9.0.tar.gz", hash = "sha256:b4ce2265a7abece45e7cc896e98dbebe6cead56bcf805a3d23136d145f5445bf", size = 22460, upload-time = "2024-11-08T17:25:47.436Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/10/cb/f2ad4230dc2eb1a74edf38f1a38b9b52277f75bef262d8908e60d957e13c/blinker-1.9.0-py3-none-any.whl", hash = "sha256:ba0efaa9080b619ff2f3459d1d500c57bddea4a6b424b60a91141db6fd2f08bc", size = 8458, upload-time = "2024-11-08T17:25:46.184Z" },
-]
-
-[[package]]
 name = "certifi"
 version = "2026.7.22"
 source = { registry = "https://pypi.org/simple" }
@@ -163,7 +154,6 @@ dependencies = [
     { name = "chromatinhd", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu128') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu130') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cu128' and extra == 'extra-21-chromatinhd-candidate-cu130') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu128') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu130') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cu128' and extra == 'extra-21-chromatinhd-candidate-cu130')" },
     { name = "numpy", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu128') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu130') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cu128' and extra == 'extra-21-chromatinhd-candidate-cu130') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu128') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu130') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cu128' and extra == 'extra-21-chromatinhd-candidate-cu130')" },
     { name = "pandas", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu128') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu130') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cu128' and extra == 'extra-21-chromatinhd-candidate-cu130') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu128') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu130') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cu128' and extra == 'extra-21-chromatinhd-candidate-cu130')" },
-    { name = "polyptich", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu128') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu130') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cu128' and extra == 'extra-21-chromatinhd-candidate-cu130') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu128') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu130') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cu128' and extra == 'extra-21-chromatinhd-candidate-cu130')" },
     { name = "pyarrow", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu128') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu130') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cu128' and extra == 'extra-21-chromatinhd-candidate-cu130') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu128') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu130') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cu128' and extra == 'extra-21-chromatinhd-candidate-cu130')" },
 ]
 
@@ -183,22 +173,12 @@ requires-dist = [
     { name = "chromatinhd", url = "https://github.com/instantomics/chromatinhd/releases/download/chromatinhd-wheel-v0.4.3/chromatinhd-0.4.3-cp313-cp313-linux_x86_64.whl" },
     { name = "numpy", specifier = "==2.5.3" },
     { name = "pandas", specifier = "==3.0.6" },
-    { name = "polyptich", specifier = "==0.0.20" },
     { name = "pyarrow", specifier = "==25.0.1" },
     { name = "torch", marker = "extra == 'cpu'", specifier = "==2.14.0", index = "https://download.pytorch.org/whl/cpu", conflict = { package = "chromatinhd-candidate", extra = "cpu" } },
     { name = "torch", marker = "extra == 'cu128'", specifier = "==2.11.0", index = "https://download.pytorch.org/whl/cu128", conflict = { package = "chromatinhd-candidate", extra = "cu128" } },
     { name = "torch", marker = "extra == 'cu130'", specifier = "==2.14.0", index = "https://download.pytorch.org/whl/cu130", conflict = { package = "chromatinhd-candidate", extra = "cu130" } },
 ]
 provides-extras = ["cpu", "cu128", "cu130"]
-
-[[package]]
-name = "click"
-version = "8.5.0"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/c7/0e/7fa0ef50764b67090eca4114772a2abf8b6148198475e54c660b97caeee6/click-8.5.0.tar.gz", hash = "sha256:ba0d2089de75ea0310e2dde03160e6ca10009947fb95a182f9b54021bb272e34", size = 382235, upload-time = "2026-08-26T13:33:14.56Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/58/50/6c0d534c5f134586a8e1ba4e330569e32f057e33372ae556463212fb4cd3/click-8.5.0-py3-none-any.whl", hash = "sha256:255bc9599cf7748b4b1a446ccc735421bd08a2ae529a8b88597d3de5664ee360", size = 125251, upload-time = "2026-08-26T13:33:12.928Z" },
-]
 
 [[package]]
 name = "cloudpickle"
@@ -418,23 +398,6 @@ wheels = [
 ]
 
 [[package]]
-name = "flask"
-version = "3.1.3"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "blinker", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu128') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu130') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cu128' and extra == 'extra-21-chromatinhd-candidate-cu130') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu128') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu130') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cu128' and extra == 'extra-21-chromatinhd-candidate-cu130')" },
-    { name = "click", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu128') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu130') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cu128' and extra == 'extra-21-chromatinhd-candidate-cu130') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu128') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu130') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cu128' and extra == 'extra-21-chromatinhd-candidate-cu130')" },
-    { name = "itsdangerous", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu128') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu130') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cu128' and extra == 'extra-21-chromatinhd-candidate-cu130') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu128') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu130') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cu128' and extra == 'extra-21-chromatinhd-candidate-cu130')" },
-    { name = "jinja2", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu128') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu130') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cu128' and extra == 'extra-21-chromatinhd-candidate-cu130') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu128') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu130') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cu128' and extra == 'extra-21-chromatinhd-candidate-cu130')" },
-    { name = "markupsafe", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu128') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu130') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cu128' and extra == 'extra-21-chromatinhd-candidate-cu130') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu128') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu130') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cu128' and extra == 'extra-21-chromatinhd-candidate-cu130')" },
-    { name = "werkzeug", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu128') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu130') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cu128' and extra == 'extra-21-chromatinhd-candidate-cu130') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu128') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu130') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cu128' and extra == 'extra-21-chromatinhd-candidate-cu130')" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/26/00/35d85dcce6c57fdc871f3867d465d780f302a175ea360f62533f12b27e2b/flask-3.1.3.tar.gz", hash = "sha256:0ef0e52b8a9cd932855379197dd8f94047b359ca0a78695144304cb45f87c9eb", size = 759004, upload-time = "2026-02-19T05:00:57.678Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/7f/9c/34f6962f9b9e9c71f6e5ed806e0d0ff03c9d1b0b2340088a0cf4bce09b18/flask-3.1.3-py3-none-any.whl", hash = "sha256:f4bcbefc124291925f1a26446da31a5178f9483862233b23c0c96a20701f670c", size = 103424, upload-time = "2026-02-19T05:00:56.027Z" },
-]
-
-[[package]]
 name = "fonttools"
 version = "4.66.1"
 source = { registry = "https://pypi.org/simple" }
@@ -510,15 +473,6 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/28/5b/202a48a1ccdef721a95357fbe263c54ef87c18c4972df1ab5c22fe0f33d5/interface_meta-2.0.1.tar.gz", hash = "sha256:902bd9a95a12f195f15753a1080075d4eca7a2cb934fac7ac03c9e362b50796a", size = 15281, upload-time = "2026-04-30T22:35:36.882Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/a1/d3/20a61a248feb1249cd81f83ce731f0bdf5170ed96a08a298f7081cda9e90/interface_meta-2.0.1-py3-none-any.whl", hash = "sha256:f38016bef9a4429b6d0792d809be7b65e9781820c674bf7f463999086b6e6323", size = 15330, upload-time = "2026-04-30T22:35:35.201Z" },
-]
-
-[[package]]
-name = "itsdangerous"
-version = "2.2.0"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/9c/cb/8ac0172223afbccb63986cc25049b154ecfb5e85932587206f42317be31d/itsdangerous-2.2.0.tar.gz", hash = "sha256:e0050c0b7da1eea53ffaf149c0cfbb5c6e2e2b69c4bef22c81fa6eb73e5f6173", size = 54410, upload-time = "2024-04-16T21:28:15.614Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/04/96/92447566d16df59b2a776c0fb82dbc4d9e07cd95062562af01e408583fc4/itsdangerous-2.2.0-py3-none-any.whl", hash = "sha256:c6242fc49e35958c8b15141343aa660db5fc54d4f13a1db01a3f5891b98700ef", size = 16234, upload-time = "2024-04-16T21:28:14.499Z" },
 ]
 
 [[package]]
@@ -1020,22 +974,6 @@ wheels = [
 ]
 
 [[package]]
-name = "polyptich"
-version = "0.0.20"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "flask", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu128') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu130') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cu128' and extra == 'extra-21-chromatinhd-candidate-cu130') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu128') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu130') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cu128' and extra == 'extra-21-chromatinhd-candidate-cu130')" },
-    { name = "jinja2", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu128') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu130') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cu128' and extra == 'extra-21-chromatinhd-candidate-cu130') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu128') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu130') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cu128' and extra == 'extra-21-chromatinhd-candidate-cu130')" },
-    { name = "matplotlib", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu128') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu130') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cu128' and extra == 'extra-21-chromatinhd-candidate-cu130') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu128') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu130') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cu128' and extra == 'extra-21-chromatinhd-candidate-cu130')" },
-    { name = "numpy", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu128') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu130') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cu128' and extra == 'extra-21-chromatinhd-candidate-cu130') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu128') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu130') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cu128' and extra == 'extra-21-chromatinhd-candidate-cu130')" },
-    { name = "pandas", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu128') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu130') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cu128' and extra == 'extra-21-chromatinhd-candidate-cu130') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu128') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu130') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cu128' and extra == 'extra-21-chromatinhd-candidate-cu130')" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/9c/fc/7de9988e6298f7d408c88aeb70432f07b3277134fefab5b55ce44421f9bf/polyptich-0.0.20.tar.gz", hash = "sha256:3153832f1a1dd0d7c089f655c430347b81db4aeb04cd19e7e700f862d96dad70", size = 1290964, upload-time = "2026-07-13T16:06:28.272Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/ac/98/c71805bb84bf7fd3d5232d7c1393b0f4ade86824f58beb068905fada911a/polyptich-0.0.20-py3-none-any.whl", hash = "sha256:48a096378d2ccc0bc34f2d74510b7d75cdd6fab3bab850cdd1a87ae9e0259e5d", size = 54534, upload-time = "2026-07-13T16:06:26.657Z" },
-]
-
-[[package]]
 name = "pyarrow"
 version = "25.0.1"
 source = { registry = "https://pypi.org/simple" }
@@ -1514,18 +1452,6 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/e3/05/b17359e1cefb4f909b5e40b1b90a496d987258916dbbf88e842c729f510e/urllib3-2.8.0.tar.gz", hash = "sha256:63bf2ead4c879426ebf22ef2a781eeb4aa3b4ae798a0435506f8687fd5bb9b63", size = 458972, upload-time = "2026-09-15T19:29:36.253Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/92/9d/c4e665119135114480843e7ab388fa94d8480650450e6f8e26b70d323a4c/urllib3-2.8.0-py3-none-any.whl", hash = "sha256:0cf3cae568d36aa9576b28dfb35f11328f1cb974ca7647d9475ebb86c75ac6e3", size = 135717, upload-time = "2026-09-15T19:29:34.577Z" },
-]
-
-[[package]]
-name = "werkzeug"
-version = "3.1.9"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "markupsafe", marker = "(platform_machine == 'x86_64' and sys_platform == 'linux') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu128') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu130') or (platform_machine != 'x86_64' and extra == 'extra-21-chromatinhd-candidate-cu128' and extra == 'extra-21-chromatinhd-candidate-cu130') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu128') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cpu' and extra == 'extra-21-chromatinhd-candidate-cu130') or (sys_platform != 'linux' and extra == 'extra-21-chromatinhd-candidate-cu128' and extra == 'extra-21-chromatinhd-candidate-cu130')" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/a4/34/4dd12fc8bb7d61c91467ec3efe415ffa7d5456f799954b40c5bbaeae470e/werkzeug-3.1.9.tar.gz", hash = "sha256:55ca7c70a75689be937aa27f8ff4b018f06ff4838fc73045560bf0f5a1291060", size = 940188, upload-time = "2026-09-27T18:33:41.637Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/a1/38/df03f564f43cec2684823f3cccae1a652ee7face1cbaa76fb223096e64d7/werkzeug-3.1.9-py3-none-any.whl", hash = "sha256:6392e50c78460ba618e5b21f08a71f59c99ce99cdc6cf6e3dd7e6ccca8754fab", size = 228700, upload-time = "2026-09-27T18:33:39.685Z" },
 ]
 
 [[package]]
