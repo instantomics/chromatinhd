@@ -10,9 +10,10 @@ import numpy as np
 import pandas as pd
 import pyarrow.parquet as pq
 import torch
+from chromatinhd.embedding import EmbeddingTensor
 from chromatinhd.models.diff.model.binary import Model
 
-from .grid import integrate_bins, nearest_represented_query, regions_from_bins, window
+from .grid import design_matrix, integrate_bins, regions_from_bins, window
 
 
 @dataclass(frozen=True)
@@ -22,6 +23,8 @@ class Parameters:
     n_cells_step: int
     n_regions_step: int
     random_seed: int
+    continuous_knots: int
+    delta_p_scale: float
 
     @classmethod
     def from_mapping(cls, value: dict) -> Parameters:
@@ -31,6 +34,8 @@ class Parameters:
             n_cells_step=int(value["n_cells_step"]),
             n_regions_step=int(value["n_regions_step"]),
             random_seed=int(value["random_seed"]),
+            continuous_knots=int(value["continuous_knots"]),
+            delta_p_scale=float(value["delta_p_scale"]),
         )
 
 
@@ -91,7 +96,7 @@ def fit_rates(
     fragments.create_regionxcell_indptr()
 
     # One ChromatinHD cluster per supplied design query, assigned to fit cells by
-    # the task's nearest-query column.
+    # the task's nearest-query column. Cluster deltas are fitted in design space.
     labels = pd.Series(
         pd.Categorical(cells["query_id"].astype(str), categories=query_ids),
         index=cell_index,
@@ -107,9 +112,13 @@ def fit_rates(
         clustering=clustering,
         fold={"cells_train": all_cells, "cells_validation": all_cells},
         path=workdir / "model",
-        encoder_params={"binwidths": binwidths},
+        encoder_params={"binwidths": binwidths, "delta_p_scale": parameters.delta_p_scale},
     )
     _use_declared_exposure(model, fragments.counts, cells["exposure"].to_numpy())
+    _share_deltas_through_design(
+        model,
+        torch.tensor(design_matrix(queries, parameters.continuous_knots), dtype=torch.float32),
+    )
     model.train_model(
         device=device,
         n_epochs=parameters.n_epochs,
@@ -138,10 +147,7 @@ def fit_rates(
         bins["start"].to_numpy() - offset,
         bins["end"].to_numpy() - offset,
     )
-
-    represented = np.isin(np.arange(len(query_ids)), clustering.indices)
-    source = nearest_represented_query(queries, represented)
-    return Rates(query_ids, tuple(bins["bin_id"].astype(str)), cluster_rates[source])
+    return Rates(query_ids, tuple(bins["bin_id"].astype(str)), cluster_rates)
 
 
 def _use_declared_exposure(model: Model, counts: np.ndarray, exposure: np.ndarray) -> None:
@@ -156,3 +162,39 @@ def _use_declared_exposure(model: Model, counts: np.ndarray, exposure: np.ndarra
     model.overall_bias = torch.log(
         torch.tensor(min_overall + (1 - min_overall) * overall, dtype=torch.float32)
     )
+
+
+class _DesignDeltas(torch.nn.Module):
+    """Per-region cluster deltas constrained to the span of a cluster design matrix."""
+
+    def __init__(self, n_regions: int, design: torch.Tensor, dims: tuple[int, ...]):
+        super().__init__()
+        self.coefficients = EmbeddingTensor(n_regions, (design.shape[1], *dims), sparse=True)
+        self.coefficients.data[:] = 0.0
+        self.register_buffer("design", design)
+
+    @property
+    def weight(self):
+        return self.coefficients.weight
+
+    def forward(self, regions):
+        return torch.einsum("cf,rf...->rc...", self.design, self.coefficients(regions))
+
+
+def _share_deltas_through_design(model: Model, design: torch.Tensor) -> None:
+    """Fit ChromatinHD cluster deltas as design effects instead of free per-cluster values.
+
+    The same mechanism as upstream's low-rank encoder, with task design columns in
+    place of transcriptome components. Upstream's prior still applies to each
+    cluster's positional deltas.
+    """
+    encoder = model.encoder
+    n_regions = model.n_total_regions
+    sparse = []
+    for level in range(len(encoder.binwidths)):
+        dims = getattr(encoder, f"w_delta_{level}").embedding_dims[1:]
+        deltas = _DesignDeltas(n_regions, design, dims)
+        setattr(encoder, f"w_delta_{level}", deltas)
+        sparse.extend((getattr(encoder, f"w_{level}").weight, deltas.weight))
+    encoder._parameters_sparse = sparse
+    model.overall_delta = _DesignDeltas(n_regions, design, ())

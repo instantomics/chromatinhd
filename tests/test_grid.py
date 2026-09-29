@@ -8,7 +8,7 @@ import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).parents[1] / "candidate" / "src"))
 
-from mymodel.grid import integrate_bins, nearest_represented_query  # noqa: E402
+from mymodel.grid import design_matrix, integrate_bins  # noqa: E402
 
 
 def test_bins_receive_their_share_of_model_bin_mass() -> None:
@@ -25,19 +25,24 @@ def test_bins_receive_their_share_of_model_bin_mass() -> None:
     np.testing.assert_allclose(rates[1], [4.0, 2.4 + 3.0 + 0.8, 3.0])
 
 
-def test_unrepresented_queries_borrow_only_from_the_same_categorical_design() -> None:
+def test_design_shares_effects_within_cell_types_only() -> None:
     queries = pd.DataFrame(
         {
-            "query_index": range(5),
             "query_id": ["h_c0_z0", "h_c0_z1", "h_c1_z0", "h_c1_z1", "k_c0"],
             "cell_type": ["h", "h", "h", "h", "k"],
             "condition": [0, 0, 1, 1, 0],
-            "continuous_zonation": [0.0, 0.1, 0.0, 0.1, 0.5],
+            "is_zonated": [True, True, True, True, False],
+            "continuous_zonation": [0.0, 1.0, 0.0, 1.0, 0.5],
+            "reference_group_id": ["h", "h", "h", "h", "k"],
             "weight": [0.5, 0.5, 0.5, 0.5, 1.0],
         }
     )
-    represented = np.array([False, True, False, True, False])
 
-    source = nearest_represented_query(queries, represented)
+    design = design_matrix(queries, knots=3)
 
-    assert source.tolist() == [1, 1, 3, 3, 4]
+    # Cell type (2), cell type x condition (2 x 2), cell type x zonation tents (2 x 3);
+    # zonation eligibility and reference groups are fixed within cell types.
+    assert design.shape == (5, 12)
+    np.testing.assert_array_equal(design[0], [1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0])
+    np.testing.assert_array_equal(design[3], [1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0])
+    np.testing.assert_array_equal(design[4], [0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0])

@@ -1,4 +1,4 @@
-"""Mappings between the task's bin and query grids and ChromatinHD's clusters."""
+"""Mappings between the task's bin and query grids and ChromatinHD's parameters."""
 
 from __future__ import annotations
 
@@ -10,7 +10,9 @@ import pandas as pd
 # Upstream Shared-encoder resolutions. Levels that do not tile a dataset's region
 # window are dropped; the finest level fixes the positional resolution.
 UPSTREAM_BINWIDTHS = (5000, 1000, 500, 200, 100, 50, 25)
-_BOOKKEEPING_COLUMNS = frozenset({"query_index", "query_id", "weight"})
+_BOOKKEEPING_COLUMNS = frozenset(
+    {"query_index", "query_id", "reference_group_id", "unit_exposure", "weight"}
+)
 
 
 def regions_from_bins(bins: pd.DataFrame) -> pd.DataFrame:
@@ -59,31 +61,43 @@ def _cumulative_at(cumulative, region, position, finest):
     return (below + fraction[:, None] * (above - below)).T
 
 
-def nearest_represented_query(queries: pd.DataFrame, represented: np.ndarray) -> np.ndarray:
-    """Map each query to itself, or to the nearest represented continuous grid point.
+def design_matrix(queries: pd.DataFrame, knots: int) -> np.ndarray:
+    """Query-by-feature design within which ChromatinHD cluster deltas are fitted.
 
-    Queries without fit cells borrow the fitted cluster with the same categorical
-    design at the closest continuous coordinates. Without such a cluster, the
-    query keeps ChromatinHD's unobserved-cluster prediction: the shared baseline.
+    Features are cell-type indicators, their interactions with every other
+    varying categorical design column, and their interactions with a
+    piecewise-linear basis of each continuous column. Columns that are fixed
+    within cell types, such as zonation eligibility, add no features.
     """
-    continuous = [column for column in queries.columns if column.startswith("continuous_")]
-    design = [
-        column
-        for column in queries.columns
-        if column not in _BOOKKEEPING_COLUMNS and column not in continuous
-    ]
-    keys = (
-        queries[design].astype(str).agg("\x1f".join, axis=1).to_numpy()
-        if design
-        else np.zeros(len(queries))
+    group = (
+        queries["cell_type"].astype(str).to_numpy()
+        if "cell_type" in queries
+        else np.zeros(len(queries), dtype=str)
     )
-    values = queries[continuous].to_numpy(dtype=np.float64)
-    source = np.arange(len(queries))
-    for index in np.flatnonzero(~represented):
-        candidates = represented & (keys == keys[index])
-        if not candidates.any():
+    indicators = _one_hot(group)
+    continuous = [column for column in queries.columns if column.startswith("continuous_")]
+    blocks = [indicators]
+    for column in queries.columns:
+        if column in _BOOKKEEPING_COLUMNS or column in continuous or column == "cell_type":
             continue
-        choices = np.flatnonzero(candidates)
-        distance = np.abs(values[choices] - values[index]).sum(axis=1)
-        source[index] = choices[np.argmin(distance)]
-    return source
+        values = queries[column].astype(str)
+        if values.groupby(group).nunique().max() > 1:
+            blocks.append(_interact(indicators, _one_hot(values.to_numpy())))
+    for column in continuous:
+        blocks.append(_interact(indicators, _tent_basis(queries[column].to_numpy(float), knots)))
+    return np.concatenate(blocks, axis=1)
+
+
+def _one_hot(values: np.ndarray) -> np.ndarray:
+    levels = list(dict.fromkeys(values.tolist()))
+    return (values[:, None] == np.asarray(levels, dtype=values.dtype)[None, :]).astype(float)
+
+
+def _interact(left: np.ndarray, right: np.ndarray) -> np.ndarray:
+    return (left[:, :, None] * right[:, None, :]).reshape(len(left), -1)
+
+
+def _tent_basis(values: np.ndarray, knots: int) -> np.ndarray:
+    points = np.linspace(values.min(), values.max(), knots)
+    spacing = max(points[1] - points[0], np.finfo(float).tiny)
+    return np.clip(1.0 - np.abs(values[:, None] - points[None, :]) / spacing, 0.0, 1.0)
