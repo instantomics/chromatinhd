@@ -53,10 +53,13 @@ def fit_rates(
     *,
     device: str,
     threads: int,
+    region_column: str = "region_id",
 ) -> Rates:
-    bins = pq.read_table(
-        paths["bins"], columns=["bin_id", "region_id", "chrom", "start", "end"]
-    ).to_pandas()
+    bins = (
+        pq.read_table(paths["bins"], columns=["bin_id", region_column, "chrom", "start", "end"])
+        .to_pandas()
+        .rename(columns={region_column: "region_id"})
+    )
     cells = pq.read_table(paths["cells"], columns=["cell_id", "query_id", "exposure"]).to_pandas()
     queries = pq.read_table(paths["queries"]).to_pandas()
     insertions = pq.read_table(
