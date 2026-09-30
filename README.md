@@ -71,3 +71,12 @@ responses.
 The wrapper uses no held-out cells, truth, validation outcome, or RNA. It does
 not tune from validation or retry. Its rates are the model's point estimates,
 without posterior uncertainty or calibrated differential calls.
+
+There is no `differential_coaccessibility` integration. ChromatinHD-*diff*
+treats the cells of one cluster as independent draws, so, unchanged, it implies
+a co-accessibility ratio of one everywhere. That answer is the task's
+no-coupling zero point. The long-range interactions described for ChromatinHD
+come from ChromatinHD-*pred* co-predictivity: the non-additive effect of jointly
+censoring two windows on predicted gene expression. Computing it needs paired
+RNA, which that task does not give candidates, and it measures joint prediction
+of expression rather than within-cell co-opening.
